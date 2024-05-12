@@ -1,0 +1,37 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <h1 style="margin-left: 40%;">List of post</h1>
+    <div class="btn-group" style="margin-left: 10%;">
+        <a href="{% url 'addPost' %}" class="btn btn-primary active" aria-current="page">Add post</a>
+        
+    </div> <br> <br>
+    <ul style="align-items: center; margin-left: 40%;">
+        {% for post in posts %}
+        <br> <br>
+            <div class="card" style="width: 18rem;">
+                <h5 class="card-title">{{ post.created_on }} | {{ post.author }} </h5>
+                <h3 class="card-title">{{ post.title }} </h3>
+                {% if post.image %}
+                <img src="../media/{{ post.image }}" class="card-img-top" alt="...">
+                {% endif %}
+                <div class="card-body">
+                    <p class="card-text"> {{ post.content }}</p>
+                    <a href="{% url 'detailPost' pk=post.id %}" class="btn btn-primary">Details👉 </a>
+                </div>
+            </div>        
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,15 @@
+<!-- Dans supprimer_produit.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Supprimer la poste : {{ post.title }}</title>
+</head>
+<body>
+    <h1>Êtes-vous sûr de vouloir supprimer le Produit : {{ post }} ?</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Oui, supprimer</button>
+    </form>
+</body>
+</html>
